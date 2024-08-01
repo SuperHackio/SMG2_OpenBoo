@@ -1,0 +1,24 @@
+{
+  "Name": "Spooky Speedster in SMG2",
+  "Author": "Super Hackio",
+  "Description": "Ehehehe... so you're after it too?",
+
+  "ModuleData": [
+    {
+      "NameObjFactory": [
+        {
+          "Name": "TeresaRacer",
+          "Function": "createExtActor<TeresaRacer>",
+          "Include": "Game/NPC/TeresaRacer.h"
+        }
+      ],
+      "ProductMapObj": [
+        {
+          "Name": "AnmModelBindMove",
+          "Function": "createExtActor<AnmModelBindMove>",
+          "Include": "Game/MapObj/AnmModelBindMove.h"
+        }
+      ]
+    }
+  ]
+}
