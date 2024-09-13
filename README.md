@@ -2,8 +2,8 @@
 ### Spooky Speedster in SMG2
 
 
-## Compatibility Warning
-For the time being, this module only supports Vanilla. It does not work with [Galaxy Level Engine](https://www.github.com/SuperHackio/GalaxyLevelEngine). Once a Syati API Module for GLE is made, compatibility will be enabled.
+## Compatibility Notice
+The [Galaxy Level Engine](https://www.github.com/SuperHackio/GalaxyLevelEngine) API Module is required for this module if you are using GLE
 
 
 This is an enhanced port of the Spooky Speedster from Super Mario Galaxy. It includes new SMG2 specific features while still being faithful to the original.

@@ -2,7 +2,8 @@
   "Name": "Spooky Speedster in SMG2",
   "Author": "Super Hackio",
   "Description": "Ehehehe... so you're after it too?",
-
+  "ModuleOptionalDependancies": [ "GalaxyLevelEngine_API" ],
+  
   "ModuleData": [
     {
       "NameObjFactory": [

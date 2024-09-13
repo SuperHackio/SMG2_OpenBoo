@@ -601,7 +601,7 @@ namespace MR {
 	kmWrite32(0x80265CA0, 0x48000024); //b* 0x80265CC4
 
 
-	//If you are NOT using GLE, uncomment these:
+#ifndef GALAXY_LEVEL_ENGINE
     // These should probably be moved to a common "Extended Race Functionality" module in the future.
     // However, GLE comes packaged with an equivalent function so this would break if you tried to use GLE at the same time.
 
@@ -622,4 +622,5 @@ namespace MR {
 		return true;
 	}
 	kmCall(0x80263A28, GetRaceStartType);
+#endif
 }
