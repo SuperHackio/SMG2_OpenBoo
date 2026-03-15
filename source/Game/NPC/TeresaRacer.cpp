@@ -76,11 +76,11 @@ void TeresaRacer::init(const JMapInfoIter& rIter) {
 	mActionWait = mActionWaitTurn = "WaitOpen";
 	mActionTalk = mActionTalkTurn = "WaitOpenTalk";
 	_120 = _124 = "Chase";
-	_F4 = 1.5f;
+	mTurnSpeed = 1.5f;
 	_110 = 20.f;
 	_114 = 0.1f;
 	_118 = 0.05f;
-	_F0 = 3000.f;
+	mTurnDist = 3000.f;
 	mTakeOutStar = new TakeOutStar(this, "TakeOutStarTeresaRacer", "TakeOutStarTeresaRacer", &NrvTeresaRacer::TeresaRacerNrvTakeOutStar::sInstance, 0);
 
 	makeActorAppeared();
@@ -289,9 +289,9 @@ void TeresaRacer::exeGoal()
 {
 	if (MR::isFirstStep(this))
 	{
-		this->_EC = true;
+		this->mEnableTurn = true;
 		this->_110 = 0.f;
-		this->_ED = true;
+		this->mEnableTalkTurn = true;
 	}
 
 	if (MR::getRailCoordSpeed(this) < 1.f)
@@ -344,8 +344,8 @@ void TeresaRacer::prepRacer(const RaceManager* pRaceManager) {
 	MR::requestMovementOn(this);
 	MR::startAction(this, "Chase");
 
-	this->_EC = false;
-	this->_ED = false;
+	this->mEnableTurn = false;
+	this->mEnableTalkTurn = false;
 }
 
 void TeresaRacer::startRacer() {
@@ -426,8 +426,8 @@ void TeresaRacer::resetRacer(const RaceManager* pRaceManager) {
 	turnToPlayer();
 	setNerve(&NrvTeresaRacer::TeresaRacerNrvPost::sInstance);
 	MR::startMultiActorCameraTargetSelf(this, this->mActorCameraInfo, "‰ï˜b", -1);
-	_EC = true;
-	_ED = true;
+	mEnableTurn = true;
+	mEnableTalkTurn = true;
 }
 
 void TeresaRacer::exitRacer() {
