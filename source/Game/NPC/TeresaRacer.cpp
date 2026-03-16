@@ -75,7 +75,7 @@ void TeresaRacer::init(const JMapInfoIter& rIter) {
 
 	mActionWait = mActionWaitTurn = "WaitOpen";
 	mActionTalk = mActionTalkTurn = "WaitOpenTalk";
-	_120 = _124 = "Chase";
+	mActionWalkName = mActionWalkTalkName = "Chase";
 	mTurnSpeed = 1.5f;
 	_110 = 20.f;
 	_114 = 0.1f;
