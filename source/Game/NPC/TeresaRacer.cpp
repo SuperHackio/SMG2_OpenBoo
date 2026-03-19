@@ -73,14 +73,14 @@ void TeresaRacer::init(const JMapInfoIter& rIter) {
 
 	MR::initMultiActorCamera(this, rIter, &this->mActorCameraInfo, "‰ï˜b");
 
-	mActionWait = mActionWaitTurn = "WaitOpen";
-	mActionTalk = mActionTalkTurn = "WaitOpenTalk";
-	mActionWalkName = mActionWalkTalkName = "Chase";
-	mTurnSpeed = 1.5f;
+	mTalkParam.mActionWait = mTalkParam.mActionWaitTurn = "WaitOpen";
+	mTalkParam.mActionTalk = mTalkParam.mActionTalkTurn = "WaitOpenTalk";
+	mActionWalk = mActionWalkTalk = "Chase";
+	mTalkParam.mTurnSpeed = 1.5f;
 	_110 = 20.f;
 	_114 = 0.1f;
 	_118 = 0.05f;
-	mTurnDist = 3000.f;
+	mTalkParam.mTurnDist = 3000.f;
 	mTakeOutStar = new TakeOutStar(this, "TakeOutStarTeresaRacer", "TakeOutStarTeresaRacer", &NrvTeresaRacer::TeresaRacerNrvTakeOutStar::sInstance, 0);
 
 	makeActorAppeared();
@@ -112,35 +112,35 @@ bool TeresaRacer::animeFunc(u32 vParam)
 	if (vParam == 0)
 	{
 		MR::tryStartActionNotPlaying(this, "Close");
-		mActionTalk =
-			mActionTalkTurn =
-			mActionWait =
-			mActionWaitTurn = "CloseTalk";
+		mTalkParam.mActionTalk =
+			mTalkParam.mActionTalkTurn =
+			mTalkParam.mActionWait =
+			mTalkParam.mActionWaitTurn = "CloseTalk";
 	}
 	else if (vParam == 1)
 	{
-		mActionWait =
-			mActionWaitTurn =
-			mActionTalk =
-			mActionTalkTurn = "Defeat";
+		mTalkParam.mActionWait =
+			mTalkParam.mActionWaitTurn =
+			mTalkParam.mActionTalk =
+			mTalkParam.mActionTalkTurn = "Defeat";
 		popNerve();
 		return true;
 	}
 	else if (vParam == 2)
 	{
 		MR::tryStartActionNotPlaying(this, "Open");
-		mActionTalk =
-			mActionTalkTurn = "WaitOpenTalk";
-		mActionWait =
-			mActionWaitTurn = "WaitOpen";
+		mTalkParam.mActionTalk =
+			mTalkParam.mActionTalkTurn = "WaitOpenTalk";
+		mTalkParam.mActionWait =
+			mTalkParam.mActionWaitTurn = "WaitOpen";
 	}
 	else if (vParam == 3)
 	{
 		MR::tryStartActionNotPlaying(this, "Open");
-		mActionTalk =
-			mActionTalkTurn = "WaitOpenTalk";
-		mActionWait =
-			mActionWaitTurn = "WaitOpen";
+		mTalkParam.mActionTalk =
+			mTalkParam.mActionTalkTurn = "WaitOpenTalk";
+		mTalkParam.mActionWait =
+			mTalkParam.mActionWaitTurn = "WaitOpen";
 	}
 
 	return false;
@@ -289,9 +289,9 @@ void TeresaRacer::exeGoal()
 {
 	if (MR::isFirstStep(this))
 	{
-		this->mEnableTurn = true;
+		mTalkParam.mEnableTurn = true;
 		this->_110 = 0.f;
-		this->mEnableTalkTurn = true;
+		mTalkParam.mEnableTalkTurn = true;
 	}
 
 	if (MR::getRailCoordSpeed(this) < 1.f)
@@ -344,8 +344,8 @@ void TeresaRacer::prepRacer(const RaceManager* pRaceManager) {
 	MR::requestMovementOn(this);
 	MR::startAction(this, "Chase");
 
-	this->mEnableTurn = false;
-	this->mEnableTalkTurn = false;
+	mTalkParam.mEnableTurn = false;
+	mTalkParam.mEnableTalkTurn = false;
 }
 
 void TeresaRacer::startRacer() {
@@ -426,8 +426,8 @@ void TeresaRacer::resetRacer(const RaceManager* pRaceManager) {
 	turnToPlayer();
 	setNerve(&NrvTeresaRacer::TeresaRacerNrvPost::sInstance);
 	MR::startMultiActorCameraTargetSelf(this, this->mActorCameraInfo, "‰ï˜b", -1);
-	mEnableTurn = true;
-	mEnableTalkTurn = true;
+	mTalkParam.mEnableTurn = true;
+	mTalkParam.mEnableTalkTurn = true;
 }
 
 void TeresaRacer::exitRacer() {
